@@ -4,11 +4,15 @@ import { QuanLyPhimService } from '../_core/Services/QuanLyPhim.service';
 @Component({
   selector: 'app-home-page',
   template: `<div class="container">
+    <button nz-button nzType="primary">
+      <i nz-icon nzType="search"></i>
+      Search
+    </button>
        <h3>Danh Sách Phim</h3>
       <div class="row">
         <div class="col-4 mt-2" *ngFor="let phim of mangPhim"> 
             <div class="card">
-              <img src="phim.hinhAnh" class="w-100" alt="..." />
+              <img [src]="phim.hinhAnh" class="w-100" alt="..." />
               <div class="card-body">
                   <p>{{phim.tenPhim}}</p>
                   <p>{{phim.moTa}}</p>
@@ -29,14 +33,14 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.qlPhim.layDanhSachPhim().subscribe((result: any) => {
-    //   console.log('result', result.content);
+    this.qlPhim.layDanhSachPhim().subscribe((result: any) => {
+      console.log('result', result.content);
 
 
-    //   this.mangPhim = result.content;
-    // }, (errors) => {
-    //   console.log('error', errors.error);
-    // });
+      this.mangPhim = result.content;
+    }, (errors) => {
+      console.log('error', errors.error);
+    });
 
   }
 }
