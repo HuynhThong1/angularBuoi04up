@@ -3,24 +3,24 @@ import { QuanLyPhimService } from '../_core/Services/QuanLyPhim.service';
 
 @Component({
   selector: 'app-home-page',
-  template: `<div class="container">
-    <button nz-button nzType="primary">
-      <i nz-icon nzType="search"></i>
-      Search
-    </button>
-       <h3>Danh Sách Phim</h3>
-      <div class="row">
-        <div class="col-4 mt-2" *ngFor="let phim of mangPhim"> 
-            <div class="card">
-              <img [src]="phim.hinhAnh" class="w-100" alt="..." />
-              <div class="card-body">
-                  <p>{{phim.tenPhim}}</p>
-                  <p>{{phim.moTa}}</p>
+  template: `
+      <div class="container">
+          <div>
+              <h3>Danh Sách Phim</h3>
+              <div class="row">
+                <div class="col-4 mt-2" *ngFor="let phim of mangPhim"> 
+                    <div class="card">
+                      <img [src]="phim.hinhAnh" class="w-100" alt="..." />
+                      <div class="card-body">
+                          <p>{{phim.tenPhim}}</p>
+                          <p>{{phim.moTa}}</p>
+                      </div>
+                    </div>
+                </div>
               </div>
-            </div>
-        </div>
-      </div>
-     </div>`
+          </div>
+     </div>
+     `
 
 
 })

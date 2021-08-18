@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-contact',
+    selector: 'app-dat-ghe',
     template: `
-    Contact`
+    <app-danh-sach-ghe></app-danh-sach-ghe>`
 })
 
-export class ContactComponent implements OnInit {
+export class DatGheComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }

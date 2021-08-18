@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 mx-auto">
+            <label><h2 #title>Thêm Ghế</h2></label>
+            <input type="text" class="form-control" #tenGhe placeholder="Ghế" value="Số 37"/>
+            <input type="text" class="form-control" #soGhe placeholder="Số Ghế" value="37" />
+            <input type="text" class="form-control" #gia placeholder="Giá" value="100"/>
+            <input type="text" class="form-control" #trangThai placeholder="Trạng Thái" value="false"/>
+            <button class="btn btn-primary my-2" (click)="themGheParant(tenGhe.value,soGhe.value, gia.value, trangThai.value)">Thêm Ghế</button>
+        </div>
+    </div>
+</div>
+
+
+
+

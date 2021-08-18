@@ -15,6 +15,7 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AntdModule } from './_core/Shared/Antd/Antd.module';
+import { QuanTriGheModule } from './quan-tri-ghe/quan-tri-ghe.module';
 
 registerLocaleData(en);
 
@@ -29,7 +30,7 @@ const AppRoute: Routes = [
     AppComponent, //các component trong module này (mỗi component sinh ra phải ở trong 1 module)
   ],
   imports: [
-    BrowserModule, BaiTapLayoutModule,DataBindingModule, RouterModule.forRoot(AppRoute), HomeModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AntdModule  //nơi chèn các module khác vào
+    BrowserModule, BaiTapLayoutModule,DataBindingModule, RouterModule.forRoot(AppRoute), HomeModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AntdModule, QuanTriGheModule //nơi chèn các module khác vào
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }], //nơi chèn các service vào
   bootstrap: [AppComponent] //Các component 
