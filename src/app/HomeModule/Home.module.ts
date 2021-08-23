@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from '../DataBinding/Register.component';
 import { QuanTriGheModule } from '../quan-tri-ghe/quan-tri-ghe.module';
 import { AntdModule } from '../_core/Shared/Antd/Antd.module';
 import { AboutComponent } from './About.component';
 import { DatGheComponent } from './DatGhe.component';
+import { DetailComponent } from './Details.component';
+import { FormValidationComponent } from './FormValidation.component';
 import { HeaderHomeComponent } from './HeaderHome.component';
 import { HomePageComponent } from './Homepage1.component';
 import { HomeTemplateComponent } from './HomeTemplate.component';
@@ -20,16 +23,19 @@ const HomeRoute:Routes = [
   {path: '', component: HomeTemplateComponent, children:[
     {path:'', component: HomePageComponent},
     {path:'login', component: LoginComponent},
-    {path:'register', component: RegisterComponent},
+    // {path:'register', component: RegisterComponent},
     {path:'about', component: AboutComponent},
     {path:'datghe', component: DatGheComponent},
+    {path:'detail/:id', component: DetailComponent},
+    {path:'detail', component: DetailComponent},
+    {path:'register', component: FormValidationComponent},
   ]},
 ]
 
 
 @NgModule({
-  declarations: [HomePageComponent,AboutComponent,RegisterComponent2, LoginComponent ,DatGheComponent, HomeTemplateComponent, HeaderHomeComponent],
-  imports: [RouterModule.forChild(HomeRoute), CommonModule, AntdModule,QuanTriGheModule],
+  declarations: [HomePageComponent,AboutComponent,RegisterComponent2, LoginComponent ,DatGheComponent, HomeTemplateComponent, HeaderHomeComponent, DetailComponent, FormValidationComponent],
+  imports: [RouterModule.forChild(HomeRoute), CommonModule, AntdModule,QuanTriGheModule, FormsModule],
   providers: [], //nơi sử dụng service k có provider trong root
   exports: [],
   

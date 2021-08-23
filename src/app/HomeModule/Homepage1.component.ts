@@ -14,6 +14,9 @@ import { QuanLyPhimService } from '../_core/Services/QuanLyPhim.service';
                       <div class="card-body">
                           <p>{{phim.tenPhim}}</p>
                           <p>{{phim.moTa}}</p>
+                          <a class="btn btn-success" [routerLink]="['detail', phim.maPhim]">Xem Chi Tiết</a>
+                          <a class="btn btn-success ml-2" routerLink="/detail/{{phim.maPhim}}">Xem Chi Tiết</a>
+                          <a class="btn btn-warning mt-2" routerLink="/detail" [queryParams]="{maPhim:phim.maPhim, tenPhim:phim.tenPhim}">Xem Chi Tiết</a>
                       </div>
                     </div>
                 </div>
