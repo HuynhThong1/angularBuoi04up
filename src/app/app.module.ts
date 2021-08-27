@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
@@ -16,6 +16,15 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AntdModule } from './_core/Shared/Antd/Antd.module';
 import { QuanTriGheModule } from './quan-tri-ghe/quan-tri-ghe.module';
+import { HeaderInterceptor } from './_core/guards/jwt.interceptor';
+
+
+
+// cấu hình ngrx/store
+
+
+import {StoreModule} from '@ngrx/store';
+import { modalReducer } from './_core/redux/Reducers/Modal.reducer';
 
 registerLocaleData(en);
 
@@ -23,6 +32,8 @@ registerLocaleData(en);
 const AppRoute: Routes = [
   {path: 'home', loadChildren: () => HomeModule},
   {path: 'admin', loadChildren: () => AdminModule},
+  {path: '', loadChildren: () =>HomeModule},
+  // {path: '**', redirectTo: ''}
 ]
 
 @NgModule({
@@ -30,9 +41,13 @@ const AppRoute: Routes = [
     AppComponent, //các component trong module này (mỗi component sinh ra phải ở trong 1 module)
   ],
   imports: [
-    BrowserModule, BaiTapLayoutModule,DataBindingModule, RouterModule.forRoot(AppRoute), HomeModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AntdModule, QuanTriGheModule //nơi chèn các module khác vào
+    BrowserModule, BaiTapLayoutModule,DataBindingModule, RouterModule.forRoot(AppRoute), HomeModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AntdModule, QuanTriGheModule, StoreModule.forRoot({modalReducer:modalReducer})
+     //nơi chèn các module khác vào
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }], //nơi chèn các service vào
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass:HeaderInterceptor, multi:true}
+  ], //nơi chèn các service vào
   bootstrap: [AppComponent] //Các component 
 })
 export class AppModule { } //Module gốc ứng dụng 

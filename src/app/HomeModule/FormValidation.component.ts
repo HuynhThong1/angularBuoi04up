@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { QuanLyNguoiDungService } from '../_core/Services/QuanLyNguoiDung.service';
 
 @Component({
     selector: 'app-form-validation',
@@ -130,13 +131,26 @@ export class FormValidationComponent implements OnInit {
 
     emailRegex: string = `/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\ [[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/`
 
-    constructor() { }
+    constructor(private nguoiDungService:QuanLyNguoiDungService) { }
 
     ngOnInit() { }
 
 
-    dangKy(value: NgForm) {
+    async dangKy(value: NgForm) {
+        
+        //call api
+        try{
+            const result = await this.nguoiDungService.dangKy(value).toPromise();
+
+            console.log('result', result);
+        }
+
+        catch(error){
+            console.log('error', error.error);
+        }
+
         console.log('value', value);
+        
     }
 
     chinhSua(nguoiDungEdit:any){
