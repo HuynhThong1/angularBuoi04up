@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../danh-sach-ghe/danh-sach-ghe.component.scss"
+    ],
+    "names": [],
+    "file": "danh-sach-ghe.component.css"
+}

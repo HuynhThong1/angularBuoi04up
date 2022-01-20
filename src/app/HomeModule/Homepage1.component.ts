@@ -10,10 +10,10 @@ import { QuanLyPhimService } from '../_core/Services/QuanLyPhim.service';
               <div class="row">
                 <div class="col-4 mt-2" *ngFor="let phim of mangPhim"> 
                     <div class="card">
-                      <img [src]="phim.hinhAnh" class="w-100" alt="..." />
+                      <img [src]="phim.hinhAnh" class="w-100" alt="..." onerror="this.src='https://picsum.photos/200/200';" />
                       <div class="card-body">
                           <p>{{phim.tenPhim}}</p>
-                          <p>{{phim.moTa}}</p>
+                          <p>{{phim.moTa | shortcut: 100}}</p>
                           <a class="btn btn-success" [routerLink]="['detail', phim.maPhim]">Xem Chi Tiết</a>
                           <a class="btn btn-success ml-2" routerLink="/detail/{{phim.maPhim}}">Xem Chi Tiết</a>
                           <a class="btn btn-warning mt-2" routerLink="/detail" [queryParams]="{maPhim:phim.maPhim, tenPhim:phim.tenPhim}">Xem Chi Tiết</a>

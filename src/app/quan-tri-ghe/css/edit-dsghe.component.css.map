@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../edit-dsghe/edit-dsghe.component.scss"
+    ],
+    "names": [],
+    "file": "edit-dsghe.component.css"
+}

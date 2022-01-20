@@ -25,6 +25,8 @@ import { HeaderInterceptor } from './_core/guards/jwt.interceptor';
 
 import {StoreModule} from '@ngrx/store';
 import { modalReducer } from './_core/redux/Reducers/Modal.reducer';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 registerLocaleData(en);
 
@@ -41,7 +43,12 @@ const AppRoute: Routes = [
     AppComponent, //các component trong module này (mỗi component sinh ra phải ở trong 1 module)
   ],
   imports: [
-    BrowserModule, BaiTapLayoutModule,DataBindingModule, RouterModule.forRoot(AppRoute), HomeModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AntdModule, QuanTriGheModule, StoreModule.forRoot({modalReducer:modalReducer})
+    BrowserModule, BaiTapLayoutModule,DataBindingModule, RouterModule.forRoot(AppRoute), HomeModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AntdModule, QuanTriGheModule, StoreModule.forRoot({modalReducer:modalReducer}), ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: environment.production,
+  // Register the ServiceWorker as soon as the app is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})
      //nơi chèn các module khác vào
   ],
   providers: [
